@@ -43,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      *
+     *
+     *
+     *
      * @param httpSecurity
      * @throws Exception
      */
@@ -51,8 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers("/login",
                 "/category/**",
-                "/question/**").permitAll().
-                anyRequest().authenticated().and().
+                "/question/**",
+                "/findAllQuestionByContent").permitAll().
+                anyRequest().authenticated().and().csrf().disable().
                 exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

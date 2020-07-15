@@ -34,7 +34,7 @@ public class CategoryController {
         return this.categoryService.save(category);
     }
 
-    @RequestMapping(value = "/deleteCategoryById/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/category/{id}", method = RequestMethod.DELETE)
     public void deleteCategoryById (@PathVariable(value = "id") Integer id) {
         log.debug("---------------REST request to deleteCategoryById--------------------");
         this.categoryService.deleteById(id);
